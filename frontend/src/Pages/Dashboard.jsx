@@ -1,6 +1,6 @@
 
 import React ,{useEffect,useState, }from 'react';
-import { Grid ,Box, Heading,Text,Image,Flex,Spacer, Divider} from '@chakra-ui/react'
+import { Grid ,Box, Heading,Text,Image,Flex,Spacer, Divider,Button} from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -12,10 +12,15 @@ import { useInView } from "react-intersection-observer";
 
 export default function Home(){
   const dispatch=useDispatch();
-return(<Flex justify={"center"} align="center">
+return(
+
     <Box>
-        <Flex></Flex>
+        <Heading>Employee Mangement Software</Heading>
+        <Flex>
+        <Button>Add Employee</Button>
+        <Button>Logout</Button>
+        </Flex>
     
     </Box>
-</Flex>)
+)
 }

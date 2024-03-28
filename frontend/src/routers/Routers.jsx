@@ -1,5 +1,6 @@
 import {Route,Routes}  from "react-router";
 import Home from "../Pages/Home";
+import Dashboard from "../Pages/Dashboard";
 export default function AllRoutes(){
     return <>
     <Routes>
