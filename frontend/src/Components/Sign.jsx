@@ -8,7 +8,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, LinkProps,keyframes,Switch } from '@chakra-ui/react'
 import { useScroll,useAnimation,useTransform, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import{ sign } from "../Redux/Authentication/action";
 
 export default function Sign(){
   const dispatch=useDispatch();
@@ -22,11 +22,11 @@ const [formData,setFormData]=useState({
   password:"",
 })
 const createUser=()=>{
-  // dispatch(sign(formData));
   
   if(formData.email!=="" && formData.password!=="" && conPassword!==""){
     if(conPassword===password){
-        console.log(formData);
+        dispatch(sign(formData));
+
 
       }
       else
@@ -47,15 +47,15 @@ const handlePasswordChange = (e) => {setFormData((prev)=>({
 })); 
 setPassword(e.target.value);}
 return(
-    <Box>
+    <Box >
   <FormControl mt={4} isRequired isInvalid={isError}>
     <FormLabel>Email</FormLabel>
     <Input placeholder='Email' value={email} onChange={handleEmailChange}/>
     {isError ? 
 (
-<FormErrorMessage>Email is required.</FormErrorMessage>
+<FormErrorMessage textAlign={"left"}>Email is required.</FormErrorMessage>
 ) :(
-<FormHelperText>
+<FormHelperText textAlign={"left"}>
 Enter your email address
 </FormHelperText>
 )}
@@ -71,9 +71,9 @@ Enter your email address
     <Input placeholder='Confirm Password' type="password" value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}} isInvalid={conPassword!==password} />
     {conPassword!==password ? 
 (
-<FormErrorMessage>Password should be Match</FormErrorMessage>
+<FormErrorMessage textAlign={"left"}>Password should be Match</FormErrorMessage>
 ) :(
-<FormHelperText>
+<FormHelperText textAlign={"left"}>
 Re Enter Password
 </FormHelperText>
 )}

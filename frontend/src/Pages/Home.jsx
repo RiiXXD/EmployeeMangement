@@ -18,11 +18,11 @@ export default function Home(){
 
 return(
 
-<Flex justify={"center"} alignItems={"center"} w="100%" h="100vh">
-    <Box>
+<Flex justify={"center"} alignItems={"center"} w="100%" h="100vh" >
+    <Box boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px"} w="30%" p="2em 1em">
     <Heading>{isLogin ? 'Login' : 'Sign Up'}</Heading>
 
-        <Flex>
+        <Flex justify={"center"} alignItems={"center"} w="100%" mt="0.5em"  >
             <Button _hover={isLogin ? 'blue':'white' } bg={isLogin ? 'blue':'white' } onClick={()=>{setIsLogin(true)}}>Login</Button>
             <Button  _hover={isLogin ? 'blue':'white' } bg={isLogin ? 'white' : 'blue'} onClick={()=>{setIsLogin(false)}}>Sign Up</Button>
         </Flex>

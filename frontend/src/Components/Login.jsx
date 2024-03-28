@@ -8,6 +8,7 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, LinkProps,keyframes,Switch } from '@chakra-ui/react'
 import { useScroll,useAnimation,useTransform, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import{ login } from "../Redux/Authentication/action";
 
 
 export default function Login(){
@@ -23,7 +24,7 @@ const [formData,setFormData]=useState({
   password:"",
 })
 const LoginUser=()=>{
-  // dispatch(sign(formData));
+  dispatch(login(formData));
   if(formData.email!=="" && formData.password!=="")
   console.log(formData);
 else
@@ -40,15 +41,15 @@ const handlePasswordChange = (e) => setFormData((prev)=>({
   password:e.target.value,
 }))
 return(
-    <Box>
+    <Box minH={"45vh"}>
   <FormControl mt={4} isRequired isInvalid={isError}>
     <FormLabel>Email</FormLabel>
     <Input placeholder='Email' value={email} onChange={handleEmailChange}/>
     {isError ? 
 (
-<FormErrorMessage>Email is required.</FormErrorMessage>
+<FormErrorMessage textAlign={"left"}>Email is required.</FormErrorMessage>
 ) :(
-<FormHelperText>
+<FormHelperText textAlign={"left"}>
 Enter your email address
 </FormHelperText>
 )}
@@ -60,7 +61,7 @@ Enter your email address
   </FormControl>
   
 
-  <Button onClick={LoginUser}>Login</Button>
+  <Button mt="4" onClick={LoginUser}>Login</Button>
 
     </Box>
   
