@@ -1,5 +1,5 @@
 
-import { SIGN_SUCCESS,SIGN_REQUEST,SIGN_ERROR,LOGIN_FAILURE,EDIT_SUCCESSFUL, EDIT_FAILURE,LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_FAILURE, LOGOUT_REQUEST } from "./action-type"
+import { SIGN_SUCCESS,SIGN_REQUEST,SIGN_ERROR,LOGIN_FAILURE,LOGIN_REQUEST, LOGIN_SUCCESS,  LOGOUT } from "./action-type"
 
 const intitState={
     isLoading : false,
@@ -42,7 +42,7 @@ export const reducer =(state=intitState,{type,payload})=>{
                     checkAuth : false,}
                 }
                 case LOGIN_REQUEST : {
-                    console.log(payload);
+                    
     
                     return {
                       ...state,
@@ -72,12 +72,12 @@ export const reducer =(state=intitState,{type,payload})=>{
                         checkAuth : false,
                     }
                     }
-                case LOGOUT_REQUEST:{
+                case LOGOUT:{
                     
                    return { 
                     ...state,
-                    user:"",
-                    msg:"",
+                    user:{},
+                    msg:"Logout Successful!",
                     isLoading :false,
                     isError:false,
                     checkAuth : false,

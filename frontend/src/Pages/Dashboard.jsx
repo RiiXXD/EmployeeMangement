@@ -19,10 +19,18 @@ import {
     TableCaption,
     TableContainer,
   } from '@chakra-ui/react'
-
+import {logOut} from "../Redux/Authentication/action";
 export default function Dashboard(){
   const dispatch=useDispatch();
+  const checkAuth = useSelector((store)=> store.authReducer.checkAuth)
+const navigate=useNavigate();
+useEffect(()=>{
+    if(!checkAuth){
+    navigate("/");
+    }
+},[checkAuth]);
 return(
+ 
 
     <Box>
         <Heading align="left" m="1em">Employee Mangement Software</Heading>
@@ -30,7 +38,7 @@ return(
         <Button >Add Employee</Button>
         <Spacer/>
 
-        <Button>Logout</Button>
+        <Button onClick={()=>{dispatch(logOut());}}>Logout</Button>
         </Flex>
         <TableContainer  m="1em">
   <Table variant='simple'>

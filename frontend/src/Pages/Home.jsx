@@ -13,9 +13,21 @@ import Login from "../Components/Login"
 import Sign from "../Components/Sign"
 
 export default function Home(){
-  const dispatch=useDispatch();
   const [isLogin,setIsLogin]=useState(true);
 
+const checkAuth = useSelector((store)=> store.authReducer.checkAuth)
+const user = useSelector((store)=> store.authReducer.user)
+
+const navigate=useNavigate();
+useEffect(()=>{
+    if(checkAuth){
+   
+    localStorage.setItem('token', user.token);
+
+        navigate("/dashboard");
+
+    }
+},[checkAuth]);
 return(
 
 <Flex justify={"center"} alignItems={"center"} w="100%" h="100vh" >
